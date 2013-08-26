@@ -2,7 +2,7 @@
 /* @var $this SiteController */
 /* @var $dataProvider CActiveDataProvider */
 
-$this->pageTitle=Yii::app()->name;
+$this->pageTitle = Yii::app()->name;
 ?>
 
 <p>Список пользователей и их компаний</p>

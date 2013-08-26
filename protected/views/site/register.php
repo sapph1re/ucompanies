@@ -1,7 +1,9 @@
 <?php
-/* @var $this RegisterFormController */
+/* @var $this SiteController */
 /* @var $model RegisterForm */
 /* @var $form CActiveForm */
+
+$this->pageTitle = Yii::app()->name." - Регистрация";
 ?>
 
 <div class="form">
@@ -22,13 +24,13 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'password'); ?>
-		<?php echo $form->textField($model,'password'); ?>
+		<?php echo $form->passwordField($model,'password'); ?>
 		<?php echo $form->error($model,'password'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'repassword'); ?>
-		<?php echo $form->textField($model,'repassword'); ?>
+		<?php echo $form->passwordField($model,'repassword'); ?>
 		<?php echo $form->error($model,'repassword'); ?>
 	</div>
 
@@ -40,7 +42,7 @@
 
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Submit'); ?>
+		<?php echo CHtml::submitButton('Зарегистрироваться'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
