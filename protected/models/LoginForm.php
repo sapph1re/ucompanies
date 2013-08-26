@@ -15,13 +15,13 @@ class LoginForm extends CFormModel
 
 	/**
 	 * Declares the validation rules.
-	 * The rules state that username and password are required,
+	 * The rules state that email and password are required,
 	 * and password needs to be authenticated.
 	 */
 	public function rules()
 	{
 		return array(
-			// username and password are required
+			// email and password are required
 			array('email, password', 'required'),
 			// rememberMe needs to be a boolean
 			array('rememberMe', 'boolean'),
@@ -50,21 +50,21 @@ class LoginForm extends CFormModel
 	{
 		if(!$this->hasErrors())
 		{
-			$this->_identity=new UserIdentity($this->username,$this->password);
+			$this->_identity=new UserIdentity($this->email, $this->password);
 			if(!$this->_identity->authenticate())
 				$this->addError('password', 'Неверные имя пользователя или пароль. Зарегистрируйтесь, если вы здесь впервые.');
 		}
 	}
 
 	/**
-	 * Logs in the user using the given username and password in the model.
+	 * Logs in the user using the given email and password in the model.
 	 * @return boolean whether login is successful
 	 */
 	public function login()
 	{
 		if($this->_identity===null)
 		{
-			$this->_identity=new UserIdentity($this->username,$this->password);
+			$this->_identity=new UserIdentity($this->email, $this->password);
 			$this->_identity->authenticate();
 		}
 		if($this->_identity->errorCode===UserIdentity::ERROR_NONE)

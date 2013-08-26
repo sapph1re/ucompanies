@@ -10,7 +10,7 @@ $this->pageTitle = Yii::app()->name;
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'dataProvider' => $dataProvider,
 	'columns' => array(
-		'email',
-		'company'
+		'email:email:E-mail',
+		'company:text:Компания'
 	)
 )); ?>
