@@ -132,11 +132,15 @@ class SiteController extends Controller
 	{
 		$dataProvider = new CActiveDataProvider('Account', array(
 			'criteria' => array(
-				'select' => array('email', 'company'),
-				'order' => 'id DESC'	// we show the newest ones first
+				'select' => array('email', 'company')
 			),
 			'pagination' => array(
 				'pageSize' => 5
+			),
+			'sort' => array(
+				'defaultOrder' => array(
+					'id' => CSort::SORT_DESC
+				)
 			)
 		));
 		$this->render('main', array('dataProvider' => $dataProvider));

@@ -23,7 +23,7 @@ class RegisterForm extends CFormModel
 			array('email', 'length', 'max' => 100),
 			array('company', 'length', 'max' => 120),
 			array('email', 'unique', 'className' => 'Account', 'attributeName' => 'email', 'caseSensitive' => false),
-			array('repassword', 'compare', 'compareAttribute' => 'password')
+			array('repassword', 'compare', 'compareAttribute' => 'password', 'message' => 'Пароли должны совпадать.')
 		);
 	}
 

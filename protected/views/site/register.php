@@ -7,44 +7,59 @@ $this->pageTitle = Yii::app()->name." - Регистрация";
 ?>
 
 <div class="form">
-
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'register-form-register-form'
+	'id'=>'register-form-register-form',
+	'enableClientValidation' => true,
+	'clientOptions' => array(
+		'validateOnSubmit' => true
+	),
+	'htmlOptions' => array(
+		'class' => 'form-signup'
+	)
 )); ?>
 
-	<p class="note">Поля, помеченные звёздочкой <span class="required">*</span>, обязательны к заполнению.</p>
+	<h2 class="form-signup-heading">Регистрация</h2>
 
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'email'); ?>
-		<?php echo $form->textField($model,'email'); ?>
-		<?php echo $form->error($model,'email'); ?>
+		<?php echo $form->label($model, 'email'); ?>
+		<?php echo $form->textField($model, 'email', array(
+			'class' => 'form-control'
+		)); ?>
+		<?php echo $form->error($model, 'email'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'password'); ?>
-		<?php echo $form->passwordField($model,'password'); ?>
-		<?php echo $form->error($model,'password'); ?>
+		<?php echo $form->label($model, 'password'); ?>
+		<?php echo $form->passwordField($model, 'password', array(
+			'class' => 'form-control'
+		)); ?>
+		<?php echo $form->error($model, 'password'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'repassword'); ?>
-		<?php echo $form->passwordField($model,'repassword'); ?>
-		<?php echo $form->error($model,'repassword'); ?>
+		<?php echo $form->label($model, 'repassword'); ?>
+		<?php echo $form->passwordField($model, 'repassword', array(
+			'class' => 'form-control'
+		)); ?>
+		<?php echo $form->error($model, 'repassword'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'company'); ?>
-		<?php echo $form->textField($model,'company'); ?>
-		<?php echo $form->error($model,'company'); ?>
+		<?php echo $form->label($model, 'company'); ?>
+		<?php echo $form->textField($model, 'company', array(
+			'class' => 'form-control'
+		)); ?>
+		<?php echo $form->error($model, 'company'); ?>
 	</div>
 
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Зарегистрироваться'); ?>
+		<?php echo CHtml::submitButton('Зарегистрироваться', array(
+			'class' => 'btn btn-lg btn-primary btn-block'
+		)); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
-
-</div><!-- form -->
+</div>
