@@ -48,12 +48,20 @@ $this->pageTitle = Yii::app()->name." - Регистрация";
 
 	<div class="row">
 		<?php echo $form->label($model, 'company'); ?>
-		<?php echo $form->textField($model, 'company', array(
-			'class' => 'form-control'
+		<?php $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+			'model' => $model,
+			'attribute' => 'company',
+			'sourceUrl' => array('getCompanies'),
+			'options' => array(
+				'minLength' => 2
+			),
+			'htmlOptions' => array(
+				'class' => 'form-control',
+				'autocomplete' => 'off'
+			)
 		)); ?>
 		<?php echo $form->error($model, 'company'); ?>
 	</div>
-
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Зарегистрироваться', array(

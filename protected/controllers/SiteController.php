@@ -145,4 +145,24 @@ class SiteController extends Controller
 		));
 		$this->render('main', array('dataProvider' => $dataProvider));
 	}
+
+	/**
+	 * AJAX request handler for the "company" field's autocomplete
+	 */
+	public function actionGetCompanies($term)
+	{
+		$accounts = Account::model()->findAll(
+			array(
+				'select' => 'company',
+				'distinct' => true,
+				'condition' => 'company LIKE ?',
+				'params' => array('%'.$term.'%')
+			)
+		);
+		$companies = array();
+		foreach ($accounts as $account)
+			$companies[] = $account->company;
+		echo CJSON::encode($companies);
+		Yii::app()->end();
+	}
 }
